@@ -1,0 +1,39 @@
+# ~/.zshrc: executed by zsh for interactive shells.
+
+# Environment variables
+export EDITOR=nano
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# Path management
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias gs='git status'
+alias gp='git pull'
+alias gc='git commit -m'
+alias gd='git diff'
+
+# Enable color support for ls and add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# Prompt customization
+autoload -U colors && colors
+setopt PROMPT_SUBST
+PS1='%F{green}%n@%m %F{blue}%~%f $(git_prompt_info)%# '
+
+# Git prompt support
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats '(%b)'
+precmd () { vcs_info }
+
