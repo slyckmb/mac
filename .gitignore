@@ -1,0 +1,14 @@
+# Ignore everything by default
+*
+
+# Except these files and directories
+!.gitignore
+!README.md
+!.bashrc
+!some-directory/
+
+*.log
+*.tmp
+.DS_Store
+.Trash/
+
