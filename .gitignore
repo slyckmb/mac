@@ -6,6 +6,7 @@
 !README.md
 !.bashrc
 !.zshrc
+!.zshrc.pre-oh-my-zsh
 !some-directory/
 
 *.log
